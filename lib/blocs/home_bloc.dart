@@ -10,12 +10,12 @@ import '../data/models/movie_model.dart';
 
 class HomeBloc extends ChangeNotifier{
   /// States
-  late List<MovieVO> mNowPlayingMovieList;
-  late List<MovieVO> mPopularMoviesList;
-  late List<MovieVO> mShowCaseMovieList;
-  late List<MovieVO> mMoviesByGenreList;
-  late List<GenreVO> mGenreList;
-  late List<ActorVO> mActors;
+   List<MovieVO>? mNowPlayingMovieList;
+   List<MovieVO>? mPopularMoviesList;
+   List<MovieVO>? mShowCaseMovieList;
+   List<MovieVO>? mMoviesByGenreList;
+   List<GenreVO>? mGenreList;
+   List<ActorVO>? mActors;
 
   /// Models
   MovieModel mMovieModel = MovieModelImpl();

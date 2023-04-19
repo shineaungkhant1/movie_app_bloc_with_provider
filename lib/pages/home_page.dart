@@ -58,7 +58,7 @@ class HomePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Selector<HomeBloc, List<MovieVO>>(
-                  selector: (context, bloc) => bloc.mPopularMoviesList,
+                  selector: (context, bloc) => bloc.mPopularMoviesList??[],
                   builder: (context, popularMovieList, child) =>
                       BannerSectionView(
                     movieList: popularMovieList?.take(8)?.toList() ?? [],
@@ -66,7 +66,7 @@ class HomePage extends StatelessWidget {
                 ),
                 SizedBox(height: MARGIN_LARGE),
                 Selector<HomeBloc, List<MovieVO>>(
-                    selector: (context, bloc) => bloc.mNowPlayingMovieList,
+                    selector: (context, bloc) => bloc.mNowPlayingMovieList??[],
                     builder: (context, nowPlayingMovieList, child) =>
                         BestPopularMoviesAndSerialsView(
                           /// Navigate
@@ -78,10 +78,10 @@ class HomePage extends StatelessWidget {
                 CheckMovieShowTimeSectionView(),
                 SizedBox(height: MARGIN_LARGE),
                 Selector<HomeBloc, List<GenreVO>>(
-                  selector: (context, bloc) => bloc.mGenreList,
+                  selector: (context, bloc) => bloc.mGenreList??[],
                   builder: (context, genreList, child) =>
                       Selector<HomeBloc, List<MovieVO>>(
-                    selector: (context, bloc) => bloc.mMoviesByGenreList,
+                    selector: (context, bloc) => bloc.mMoviesByGenreList??[],
                     builder: (context, movieByGenreList, child) =>
                         GenreSectionView(
                       /// Navigate to details screen
@@ -99,12 +99,12 @@ class HomePage extends StatelessWidget {
                 ),
                 SizedBox(height: MARGIN_LARGE),
                 Selector<HomeBloc,List<MovieVO>>(
-                  selector: (context,bloc)=>bloc.mShowCaseMovieList,
+                  selector: (context,bloc)=>bloc.mShowCaseMovieList??[],
                     builder: (context, showCaseMovieList, child) => ShowcasesSection(
                         topRatedMovies: showCaseMovieList)),
                 SizedBox(height: MARGIN_LARGE),
                 Selector<HomeBloc,List<ActorVO>>(
-                  selector: (context,bloc)=>bloc.mActors,
+                  selector: (context,bloc)=>bloc.mActors??[],
                     builder: (context, actors, child) =>
                         ActorsAndCreatorSectionView(
                             BEST_ACTOR_TITLE, BEST_ACTOR_SEE_MORE,
