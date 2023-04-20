@@ -9,9 +9,9 @@ import '../data/vos/movie_vo.dart';
 
 class MovieDetailsBLoc extends ChangeNotifier{
   /// Stream Controllers
-  late MovieVO mMovie;
-  late List<ActorVO> mCastList;
-  late List<ActorVO> mCrewList;
+   MovieVO? mMovie;
+   List<ActorVO>? mCastList;
+   List<ActorVO>? mCrewList;
 
 
   /// Models

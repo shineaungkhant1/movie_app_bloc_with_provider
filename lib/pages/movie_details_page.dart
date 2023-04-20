@@ -24,7 +24,7 @@ class MovieDetalisPage extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => MovieDetailsBLoc(movieId),
       child: Scaffold(
-        body: Selector<MovieDetailsBLoc,MovieVO>(
+        body: Selector<MovieDetailsBLoc,MovieVO?>(
           selector: (context,bloc)=>bloc.mMovie,
           builder: (context, movie, child) => Container(
             color: HOME_SCREEN_BACKGROUND_COLOR,
@@ -48,7 +48,7 @@ class MovieDetalisPage extends StatelessWidget {
                       ),
                       SizedBox(height: MARGIN_LARGE),
                       Selector<MovieDetailsBLoc,List<ActorVO>>(
-                        selector:(context,bloc)=> bloc.mCastList ,
+                        selector:(context,bloc)=> bloc.mCastList??[] ,
                         builder: (context,castList,child)=>ActorsAndCreatorSectionView(
                             MOVIE_DETAILS_SCREEN_ACTORS_TITLE, "",
                             seeMoreButtonVisibility: false,
@@ -65,7 +65,7 @@ class MovieDetalisPage extends StatelessWidget {
                       SizedBox(height: MARGIN_LARGE),
 
                       Selector<MovieDetailsBLoc,List<ActorVO>>(
-                        selector: (context,bloc) => bloc.mCrewList,
+                        selector: (context,bloc) => bloc.mCrewList??[],
                         builder: (context,crewList,child){
                           return (crewList != null && crewList.isNotEmpty)?ActorsAndCreatorSectionView(
                               MOVIE_DETAILS_SCREEN_CREATORS_TITLE,
